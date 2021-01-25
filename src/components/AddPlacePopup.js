@@ -1,8 +1,7 @@
 import PopupWithForm from './PopupWithForm';
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 export default function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
-  const nameRef = useRef();
-  const linkRef = useRef();
+ 
   const [name, setName] = useState('');
   const [link, setLink] = useState('');
   function handleChange(e) {
@@ -26,7 +25,7 @@ export default function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
     >
 
       <input
-        ref={nameRef}
+       
         id="place-input"
         type="text"
         name="name"
@@ -41,7 +40,7 @@ export default function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
       <span id="place-input-error" className="popup__input-error"></span>
 
       <input
-        ref={linkRef}
+      
         id="url-input"
         type="url"
         name="link"

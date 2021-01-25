@@ -49,7 +49,7 @@ function App() {
             const newCards = cards.map((c) => c._id === card._id ? newCard : c);
             // Обновляем стейт
             setCards(newCards);
-        });
+        }).catch((err) => console.log(`Ошибка: ${err}`));;
     }
     function handleCardDelete(cardToDelete) {
 
@@ -66,15 +66,15 @@ function App() {
     function handleUpdateUser(userData) {
         api
             .editUserInfo(userData)
-            .then((newUser) => setCurrentUser(newUser))
-            .catch((err) => `Ошибка ${err}`)
-        closeAllPopups();
+            .then((newUser) => {setCurrentUser(newUser);closeAllPopups();})
+            .catch((err) => console.log(`Ошибка: ${err}`));
+        
     }
     function handleUpdateAvatar(newAvatar) {
         api.editAvatar(newAvatar)
-            .then((newUser) => setCurrentUser(newUser))
-            .catch((err) => `Ошибка ${err}`)
-        closeAllPopups();
+        .then((newUser) => {setCurrentUser(newUser);closeAllPopups();})
+            .catch((err) => console.log(`Ошибка: ${err}`));
+        
     }
    
     function handleAddPlaceClick() {
@@ -95,11 +95,11 @@ function App() {
         
         api
           .postCard(card)
-          .then((newCard) => setCards([newCard, ...cards]))
+          .then((newCard) => {setCards([newCard, ...cards]);closeAllPopups();})
           .catch((err) =>
             console.log(`Ошибка при добавлении новой карточки: ${err}`)
           )
-        closeAllPopups();
+        
       }
 
 
