@@ -12,6 +12,7 @@ export default function EditProfilePopup({ isOpen, onClose,onUpdateUser }) {
       about: about,
     });
     
+    
   }
   function handleChange(evt){
     evt.target.name === 'name'
