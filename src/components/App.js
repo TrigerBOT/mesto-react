@@ -22,12 +22,14 @@ function App() {
   const [selectedCard, setSelectedCard] = useState({});
   const [cards, setCards] = useState([]);
   const [currentUser, setCurrentUser] = useState({});
-  function closeAllPopups( ) {
+
+  function closeAllPopups() {
     setEditProfilePopupOpen(false);
     setEditAvatarPopupOpen(false);
     setAddPlacePopupOpen(false);
     setImagePopupOpen(false);
   }
+
   React.useEffect(() => {
     api
       .getUserInfo()
@@ -96,7 +98,6 @@ function App() {
   function handleAddPlaceClick() {
     setAddPlacePopupOpen(true);
   }
-  
 
   function handleCardClick(card) {
     setImagePopupOpen(true);
