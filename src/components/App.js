@@ -68,7 +68,7 @@ function App() {
   function handleCardDelete(cardToDelete) {
     api
       .removeCard(cardToDelete._id)
-      .then(() => setCards(cards.filter((card) => card !== cardToDelete)));
+      .then(() => setCards(cards.filter((card) => card !== cardToDelete))).catch((err) => console.log(`Ошибка: ${err}`));
   }
   function handleEditAvatarClick() {
     setEditAvatarPopupOpen(true);
@@ -121,27 +121,27 @@ function App() {
         <Header />
         <EditAvatarPopup
           isOpen={isEditAvatarPopupOpen}
-          onClose={closeAllPopups.bind(setEditAvatarPopupOpen)}
+          onClose={closeAllPopups}
           onUpdateAvatar={handleUpdateAvatar}
         />
         <EditProfilePopup
           isOpen={isEditProfilePopupOpen}
-          onClose={closeAllPopups.bind(null, setEditProfilePopupOpen)}
+          onClose={closeAllPopups}
           onUpdateUser={handleUpdateUser}
         />
         <AddPlacePopup
           isOpen={isAddPlacePopupOpen}
-          onClose={closeAllPopups.bind(null, setAddPlacePopupOpen)}
+          onClose={closeAllPopups}
           onAddPlace={handleAddPlace}
         />
         <ConfirmDeleteCardPopup
           isOpen={isConfirmDeleteCardPopupOpen}
-          onClose={closeAllPopups.bind(null, setConfirmDeleteCardPopupOpen)}
+          onClose={closeAllPopups}
         />
         <ImagePopup
           card={selectedCard}
           isOpen={isImagePopupOpen}
-          onClose={closeAllPopups.bind(null, setImagePopupOpen)}
+          onClose={closeAllPopups}
         />
         <Main
           onAddPlace={handleAddPlaceClick}
